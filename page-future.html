@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="杭州电子科技大学未来展望与规划概述。" />
+  <title>未来展望 · 杭州电子科技大学展示</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/site.css" />
+</head>
+<body>
+  <a class="skip" href="#main">跳到主要内容</a>
+  <div class="circuit-overlay" aria-hidden="true"></div>
+  <div class="bg-mesh" aria-hidden="true"></div>
+  <canvas id="bg-particles" class="bg-particles" aria-hidden="true"></canvas>
+  <div class="bg-grain" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html">杭州电子科技大学 <span>HDU</span></a>
+      <nav class="subpage-nav" id="site-nav" aria-label="站内导航">
+        <a href="index.html">导览首页</a>
+        <a href="index.html#explore">所有分块</a>
+      </nav>
+      <div class="header-controls">
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="切换浅色或深色主题">外观</button>
+        <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">菜单</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="wrap">
+    <section id="future" aria-labelledby="future-title">
+      <div class="section-label">Outlook</div>
+      <h2 id="future-title">未来展望</h2>
+      <p>
+        面向国家与区域战略需求，学校在一流本科教育与研究生培养、关键核心技术攻关、国际合作等方面持续推进。「十四五」期间，学校一般会在学科建设、师资队伍、科研平台与办学条件上设定阶段性目标；展望「十五五」及更长时期，将在高水平大学建设路径上继续深化改革。
+      </p>
+      <div class="grid-2">
+        <div class="card">
+          <strong>规划与改革（概述）</strong>
+          <p style="margin: 0.5rem 0 0; font-size: 0.95rem;">
+            围绕数字经济创新提质，强化电子信息特色与交叉学科；完善评价机制与人才培养模式，服务浙江「两个先行」与杭州城市能级提升。
+          </p>
+        </div>
+        <div class="card">
+          <strong>办学条件与新校区建设</strong>
+          <p style="margin: 0.5rem 0 0; font-size: 0.95rem;">
+            学校根据事业发展需要推进校园基本建设与新空间布局，具体项目立项、建设节点与功能分区请以浙江省及学校基建部门公开信息为准；展示页仅作结构占位说明。
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      <a href="index.html">返回导览首页</a>
+      · 权威信息请访问
+      <a href="https://www.hdu.edu.cn/" target="_blank" rel="noopener noreferrer">杭州电子科技大学官网</a>
+    </p>
+  </footer>
+
+  <button type="button" id="back-to-top" class="back-to-top" hidden aria-label="回到页面顶部">↑</button>
+
+  <script src="assets/site-shell.js" defer></script>
+  <script>
+    (function () {
+      var backBtn = document.getElementById("back-to-top");
+      function updateBackToTop() {
+        if (backBtn) backBtn.hidden = window.scrollY < 320;
+      }
+      window.addEventListener("scroll", updateBackToTop, { passive: true });
+      updateBackToTop();
+      if (backBtn) {
+        backBtn.addEventListener("click", function () {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

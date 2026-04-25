@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="杭州电子科技大学校园生活：社团、竞赛与文体活动。" />
+  <title>校园生活 · 杭州电子科技大学展示</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/site.css" />
+</head>
+<body>
+  <a class="skip" href="#main">跳到主要内容</a>
+  <div class="circuit-overlay" aria-hidden="true"></div>
+  <div class="bg-mesh" aria-hidden="true"></div>
+  <canvas id="bg-particles" class="bg-particles" aria-hidden="true"></canvas>
+  <div class="bg-grain" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html">杭州电子科技大学 <span>HDU</span></a>
+      <nav class="subpage-nav" id="site-nav" aria-label="站内导航">
+        <a href="index.html">导览首页</a>
+        <a href="index.html#explore">所有分块</a>
+      </nav>
+      <div class="header-controls">
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="切换浅色或深色主题">外观</button>
+        <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">菜单</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="wrap">
+    <section id="life" aria-labelledby="life-title">
+      <div class="section-label">Campus Life</div>
+      <h2 id="life-title">校园生活</h2>
+      <p>
+        社团活动、创新创业、学科竞赛与文体活动丰富。学校在「互联网+」「挑战杯」、电子设计、数学建模、ACM 等赛事中常年保持较好整体表现，被誉为「IT 企业家摇篮」之一；图书馆、体育馆与学生活动中心构成日常学习与生活的重要场景。
+      </p>
+      <div class="grid-3">
+        <div class="card">
+          <strong>学习与支持</strong>
+          <p style="margin: 0.5rem 0 0; font-size: 0.95rem;">图书馆文献与自习空间、学院学业辅导与创新创业孵化平台。</p>
+        </div>
+        <div class="card">
+          <strong>社团与文体</strong>
+          <p style="margin: 0.5rem 0 0; font-size: 0.95rem;">科技类、公益类、艺术类社团与校运会、文艺晚会等校园活动。</p>
+        </div>
+        <div class="card">
+          <strong>竞赛与实践</strong>
+          <p style="margin: 0.5rem 0 0; font-size: 0.95rem;">以赛促学、校企联合项目与实习基地，贴近杭州数字经济产业生态。</p>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>在校一周节奏（示意）</h3>
+        <div class="life-timeline">
+          <div class="life-step"><strong>周一至周四：</strong>课程 + 实验 + 晚自习，图书馆与学院机房使用频率最高。</div>
+          <div class="life-step"><strong>周五：</strong>社团活动集中日，常见有技术分享、项目路演与招新宣讲。</div>
+          <div class="life-step"><strong>周末：</strong>竞赛集训、校内球赛、志愿活动与城市实践并行。</div>
+        </div>
+      </div>
+      <div class="grid-2" style="margin-top: 1rem;">
+        <div class="card">
+          <strong>学习资源场景</strong>
+          <ul class="clean" style="margin-top: 0.5rem;">
+            <li>图书馆自习区、电子阅览室、预约研讨间</li>
+            <li>学院实验室开放时段与课程项目答疑</li>
+            <li>线上学习平台 + 学业导师制支持</li>
+          </ul>
+        </div>
+        <div class="card">
+          <strong>学生成长路径</strong>
+          <ul class="clean" style="margin-top: 0.5rem;">
+            <li>大一：适应大学节奏、加入社团/实验室</li>
+            <li>大二：课程进阶 + 竞赛入门 + 小项目实践</li>
+            <li>大三大四：升学/就业路线明确，强化实习与科研成果</li>
+          </ul>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>常见校园服务（示意）</h3>
+        <table class="schedule">
+          <thead>
+            <tr>
+              <th scope="col">服务类型</th>
+              <th scope="col">用途</th>
+              <th scope="col">提示</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>心理咨询与成长辅导</td>
+              <td>情绪支持、学业压力疏导、适应辅导</td>
+              <td>通过学校学生服务渠道预约，重视隐私保护。</td>
+            </tr>
+            <tr>
+              <td>创新创业平台</td>
+              <td>项目孵化、导师指导、路演训练</td>
+              <td>可结合学院创新学分或竞赛实践同步推进。</td>
+            </tr>
+            <tr>
+              <td>就业与生涯服务</td>
+              <td>实习招聘、简历修改、面试指导</td>
+              <td>建议从大二开始建立个人经历档案和作品集。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      <a href="index.html">返回导览首页</a>
+      · 权威信息请访问
+      <a href="https://www.hdu.edu.cn/" target="_blank" rel="noopener noreferrer">杭州电子科技大学官网</a>
+    </p>
+  </footer>
+
+  <button type="button" id="back-to-top" class="back-to-top" hidden aria-label="回到页面顶部">↑</button>
+
+  <script src="assets/site-shell.js" defer></script>
+  <script>
+    (function () {
+      var backBtn = document.getElementById("back-to-top");
+      function updateBackToTop() {
+        if (backBtn) backBtn.hidden = window.scrollY < 320;
+      }
+      window.addEventListener("scroll", updateBackToTop, { passive: true });
+      updateBackToTop();
+      if (backBtn) {
+        backBtn.addEventListener("click", function () {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

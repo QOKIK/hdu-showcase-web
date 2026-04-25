@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="杭州电子科技大学学科专业、一流专业建设点与就业升学数据。" />
+  <title>学科与专业 · 杭州电子科技大学展示</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/site.css" />
+</head>
+<body>
+  <a class="skip" href="#main">跳到主要内容</a>
+  <div class="circuit-overlay" aria-hidden="true"></div>
+  <div class="bg-mesh" aria-hidden="true"></div>
+  <canvas id="bg-particles" class="bg-particles" aria-hidden="true"></canvas>
+  <div class="bg-grain" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html">杭州电子科技大学 <span>HDU</span></a>
+      <nav class="subpage-nav" id="site-nav" aria-label="站内导航">
+        <a href="index.html">导览首页</a>
+        <a href="index.html#explore">所有分块</a>
+      </nav>
+      <div class="header-controls">
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="切换浅色或深色主题">外观</button>
+        <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">菜单</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="wrap">
+    <section id="majors" aria-labelledby="majors-title">
+      <div class="section-label">Programs</div>
+      <h2 id="majors-title">学科与专业情况</h2>
+      <p>
+        学校以电子信息为特色，经管学科优势明显，形成「工科为主、理工经管多学科协调发展」的格局。根据官方公开资料，学校现有 48 个本科招生专业，其中国家级一流本科专业建设点 22 个、省级一流本科专业建设点 22 个，11 个专业通过工程教育专业认证。
+      </p>
+
+      <div class="major-quick-tools">
+        <input type="search" id="major-filter" placeholder="筛选关键词，如：软件、会计、自动化…" aria-label="按关键词筛选专业卡片" autocomplete="off" />
+        <select id="major-cat" aria-label="专业门类">
+          <option value="all">全部门类</option>
+          <option value="工科">工科与信息</option>
+          <option value="理学经管">理学 · 经管 · 交叉</option>
+        </select>
+      </div>
+      <div class="major-quick-grid" id="major-quick-grid">
+        <article class="major-quick-card" data-cat="工科" data-tags="计算机 软件 网络 人工智能 物联网">
+          <h4>计算机类</h4>
+          <p>计算机科学与技术、软件工程、网络工程 等，服务数字经济与软件产业。</p>
+          <span class="major-tag">工科与信息</span>
+        </article>
+        <article class="major-quick-card" data-cat="工科" data-tags="电子 通信 信号 集成电路">
+          <h4>电子信息类</h4>
+          <p>电子信息工程、通信工程、电子科学与技术、集成电路 等方向。</p>
+          <span class="major-tag">工科与信息</span>
+        </article>
+        <article class="major-quick-card" data-cat="工科" data-tags="自动化 电气 控制">
+          <h4>自动化与电气</h4>
+          <p>自动化、电气工程及其自动化、机器人相关交叉领域。</p>
+          <span class="major-tag">工科与信息</span>
+        </article>
+        <article class="major-quick-card" data-cat="理学经管" data-tags="数学 物理 统计 基础">
+          <h4>理学基础</h4>
+          <p>数学、物理学、统计学等，为工科与科研提供基础支撑。</p>
+          <span class="major-tag">理学 · 经管 · 交叉</span>
+        </article>
+        <article class="major-quick-card" data-cat="理学经管" data-tags="会计 工商管理 管理 经济">
+          <h4>经管与人文社科</h4>
+          <p>会计学、工商管理、法学、外语等，形成多学科协调格局。</p>
+          <span class="major-tag">理学 · 经管 · 交叉</span>
+        </article>
+        <article class="major-quick-card" data-cat="理学经管" data-tags="交叉 实验 英才 创新">
+          <h4>交叉与特色实验班</h4>
+          <p>以当年招生目录为准，关注学院官网与招生网发布的实验班与方向说明。</p>
+          <span class="major-tag">理学 · 经管 · 交叉</span>
+        </article>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <strong>工科与信息类</strong>
+          <ul class="clean">
+            <li>计算机科学与技术、软件工程、网络工程</li>
+            <li>电子信息工程、通信工程、电子科学与技术</li>
+            <li>自动化、电气工程及其自动化、物联网工程</li>
+          </ul>
+        </div>
+        <div class="card">
+          <strong>理学、经管与其他</strong>
+          <ul class="clean">
+            <li>数学、物理学、统计学等基础学科支撑工科发展</li>
+            <li>会计学、工商管理、管理科学与工程等</li>
+            <li>多学科交叉实验班与特色方向以当年招生目录为准</li>
+          </ul>
+        </div>
+      </div>
+      <div class="panel" style="margin-top: 1rem;">
+        <h3>官方培养与专业建设信息</h3>
+        <div class="grid-3" style="margin-top: 0.6rem;">
+          <div class="card">
+            <strong>本科专业规模</strong>
+            <p style="margin: 0.5rem 0 0; font-size: 0.95rem;">48 个本科招生专业，覆盖电子信息、计算机、自动化、经管、法学、人文与艺术等方向。</p>
+          </div>
+          <div class="card">
+            <strong>一流专业建设点</strong>
+            <p style="margin: 0.5rem 0 0; font-size: 0.95rem;">国家级 22 个、省级 22 个；另有国家级特色专业建设点与卓越工程师教育培养计划试点专业。</p>
+          </div>
+          <div class="card">
+            <strong>升学通道</strong>
+            <p style="margin: 0.5rem 0 0; font-size: 0.95rem;">学校具有硕士推免权，支持本校深造、双一流院校升学与出国（境）留学等多元路径。</p>
+          </div>
+        </div>
+      </div>
+      <div class="panel" style="margin-top: 1rem;">
+        <h3>升学与就业指标（官方口径）</h3>
+        <table class="schedule">
+          <thead>
+            <tr>
+              <th scope="col">指标</th>
+              <th scope="col">数值</th>
+              <th scope="col">说明</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>校本部本科毕业去向落实率（2023 届）</td>
+              <td>95.11%</td>
+              <td>教育部口径已将“就业率”统一调整为“毕业去向落实率”。</td>
+            </tr>
+            <tr>
+              <td>校本部本科升学率（含出国出境，2023 届）</td>
+              <td>41.88%</td>
+              <td>升学人数 1731 人；其中本校与双一流院校为主要去向。</td>
+            </tr>
+            <tr>
+              <td>校本部本科国内升学占比（2023 届）</td>
+              <td>36.44%</td>
+              <td>对应毕业去向分类中的“国内升学”。</td>
+            </tr>
+            <tr>
+              <td>校本部本科出国（境）占比（2023 届）</td>
+              <td>5.44%</td>
+              <td>对应毕业去向分类中的“出国出境”。</td>
+            </tr>
+            <tr>
+              <td>保研率（推免比例）</td>
+              <td>以学院当年公示为准</td>
+              <td>学校具备推免资格，但具体推免名额与比例按学院、年度与政策动态发布。</td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="margin: 0.75rem 0 0; font-size: 0.9rem;">
+          示例专业毕业去向落实率（2023 届，校本部本科）：通信工程 99.62%、计算机科学与技术（计算机学院）94.69%、电子信息工程 99.07%、网络空间安全 100%、集成电路设计与集成系统 100%。
+        </p>
+        <p style="margin: 0.5rem 0 0; font-size: 0.88rem;">
+          指标出处与完整链接见导览首页「<a href="index.html#sources">资料来源</a>」。
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      <a href="index.html">返回导览首页</a>
+      · 权威信息请访问
+      <a href="https://www.hdu.edu.cn/" target="_blank" rel="noopener noreferrer">杭州电子科技大学官网</a>
+    </p>
+  </footer>
+
+  <button type="button" id="back-to-top" class="back-to-top" hidden aria-label="回到页面顶部">↑</button>
+
+  <script src="assets/site-shell.js" defer></script>
+  <script>
+    (function () {
+      var grid = document.getElementById("major-quick-grid");
+      var filter = document.getElementById("major-filter");
+      var cat = document.getElementById("major-cat");
+      function applyMajorFilter() {
+        var q = (filter && filter.value || "").trim().toLowerCase();
+        var c = cat ? cat.value : "all";
+        var cards = grid ? grid.querySelectorAll(".major-quick-card") : [];
+        cards.forEach(function (card) {
+          var okCat = c === "all" || card.getAttribute("data-cat") === c;
+          var tags = (card.getAttribute("data-tags") || "").toLowerCase();
+          var text = card.textContent.toLowerCase();
+          var okQ = !q || tags.indexOf(q) !== -1 || text.indexOf(q) !== -1;
+          card.style.display = okCat && okQ ? "" : "none";
+        });
+      }
+      if (filter) filter.addEventListener("input", applyMajorFilter);
+      if (cat) cat.addEventListener("change", applyMajorFilter);
+
+      var backBtn = document.getElementById("back-to-top");
+      function updateBackToTop() {
+        if (backBtn) backBtn.hidden = window.scrollY < 320;
+      }
+      window.addEventListener("scroll", updateBackToTop, { passive: true });
+      updateBackToTop();
+      if (backBtn) {
+        backBtn.addEventListener("click", function () {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

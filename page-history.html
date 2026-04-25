@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="杭州电子科技大学历史沿革与时间线。" />
+  <title>历史沿革 · 杭州电子科技大学展示</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/site.css" />
+</head>
+<body>
+  <a class="skip" href="#main">跳到主要内容</a>
+  <div class="circuit-overlay" aria-hidden="true"></div>
+  <div class="bg-mesh" aria-hidden="true"></div>
+  <canvas id="bg-particles" class="bg-particles" aria-hidden="true"></canvas>
+  <div class="bg-grain" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html">杭州电子科技大学 <span>HDU</span></a>
+      <nav class="subpage-nav" id="site-nav" aria-label="站内导航">
+        <a href="index.html">导览首页</a>
+        <a href="index.html#explore">所有分块</a>
+      </nav>
+      <div class="header-controls">
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="切换浅色或深色主题">外观</button>
+        <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">菜单</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="wrap">
+    <section id="history" aria-labelledby="history-title">
+      <div class="section-label">History</div>
+      <h2 id="history-title">历史沿革</h2>
+      <p>
+        学校肇始于 1956 年创建的杭州航空工业财经学校，后续经历杭州航空工业学校、浙江电机专科学校、杭州无线电工业学校等阶段。1980 年改建为杭州电子工业学院，2004 年更名为杭州电子科技大学，形成了电子信息特色鲜明、理工经管多学科协同发展的办学格局。
+      </p>
+      <p>
+        从隶属关系看，学校先后历经中央多个工业系统主管时期和浙江省属高校发展阶段，办学定位始终紧贴国家信息产业与区域数字经济需求。进入新阶段后，学校持续推进高水平大学建设，并在 2025 年发布 70 周年校庆公告（第一号），明确以 2026 年建校七十周年为重要节点，系统回顾校史、凝聚校友与社会力量。
+      </p>
+      <div class="panel">
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="year">1956—1973</div>
+            <p>学校创建并多次更名与调整，先后出现“杭州航空工业财经学校”“杭州航空工业学校”“浙江电机专科学校”“杭州无线电工业管理学校”等校名。</p>
+          </div>
+          <div class="timeline-item">
+            <div class="year">1973—1980</div>
+            <p>恢复办学并使用“杭州无线电工业学校”校名，逐步回归高等教育发展主线。</p>
+          </div>
+          <div class="timeline-item">
+            <div class="year">1980—2004</div>
+            <p>改建为杭州电子工业学院，电子信息人才培养体系加快成型，服务行业和地方发展的能力持续增强。</p>
+          </div>
+          <div class="timeline-item">
+            <div class="year">2004—至今</div>
+            <p>更名为杭州电子科技大学后，学校在学科建设、人才培养与科研平台上持续拓展，逐步形成高水平研究型大学建设路径。</p>
+          </div>
+          <div class="timeline-item">
+            <div class="year">2025—2026（校庆节点）</div>
+            <p>发布“70 周年校庆公告（第一号）”，提出“钱塘潮涌，‘芯’火相承”主题，面向 2026 年校庆开展系列学术与文化活动筹备。</p>
+          </div>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>校史关键脉络</h3>
+        <ul class="clean">
+          <li><strong>建校起点：</strong>1956 年创建，办学起源与国家工业体系人才需求紧密相关。</li>
+          <li><strong>校名演进：</strong>校史沿革显示学校曾经历多次更名与管理体制调整，反映了不同时期的国家产业布局与教育管理变化。</li>
+          <li><strong>学院到大学：</strong>1980 年“杭州电子工业学院”阶段奠定电子信息特色，2004 年更名“杭州电子科技大学”后综合实力进一步提升。</li>
+          <li><strong>七十周年节点：</strong>2025 年校庆公告发布，明确 2026 年金秋迎来建校 70 周年并邀请校友返校共襄盛举。</li>
+        </ul>
+        <p style="margin-bottom: 0; font-size: 0.9rem;">
+          参考来源见导览首页「<a href="index.html#sources">资料来源</a>」（含校史沿革网页与校庆相关报道链接）。
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      <a href="index.html">返回导览首页</a>
+      · 权威信息请访问
+      <a href="https://www.hdu.edu.cn/" target="_blank" rel="noopener noreferrer">杭州电子科技大学官网</a>
+    </p>
+  </footer>
+
+  <button type="button" id="back-to-top" class="back-to-top" hidden aria-label="回到页面顶部">↑</button>
+
+  <script src="assets/site-shell.js" defer></script>
+  <script>
+    (function () {
+      var backBtn = document.getElementById("back-to-top");
+      function updateBackToTop() {
+        if (backBtn) backBtn.hidden = window.scrollY < 320;
+      }
+      window.addEventListener("scroll", updateBackToTop, { passive: true });
+      updateBackToTop();
+      if (backBtn) {
+        backBtn.addEventListener("click", function () {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

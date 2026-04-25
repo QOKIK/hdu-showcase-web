@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="杭州电子科技大学校园轮播：前沿科学技术研究中心、藤廊寄梦、问鼎广场。" />
+  <title>校园轮播图 · 杭州电子科技大学展示</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/site.css" />
+</head>
+<body>
+  <a class="skip" href="#main">跳到主要内容</a>
+  <div class="circuit-overlay" aria-hidden="true"></div>
+  <div class="bg-mesh" aria-hidden="true"></div>
+  <canvas id="bg-particles" class="bg-particles" aria-hidden="true"></canvas>
+  <div class="bg-grain" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html">杭州电子科技大学 <span>HDU</span></a>
+      <nav class="subpage-nav" id="site-nav" aria-label="站内导航">
+        <a href="index.html">导览首页</a>
+        <a href="index.html#explore">所有分块</a>
+      </nav>
+      <div class="header-controls">
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="切换浅色或深色主题">外观</button>
+        <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">菜单</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="wrap">
+    <section id="gallery" aria-labelledby="gallery-title">
+      <div class="section-label">Moments</div>
+      <h2 id="gallery-title">校园轮播图</h2>
+      <p>
+        以下三帧依次展示前沿科学技术研究中心、藤廊寄梦与问鼎广场。适合宣讲投屏；支持自动播放，也可手动切换。
+      </p>
+      <div class="carousel" id="campus-carousel" aria-roledescription="carousel" aria-label="杭电校园地标轮播">
+        <div class="carousel-track">
+          <article class="carousel-slide is-active">
+            <div class="slide-visual">
+              <img src="assets/carousel-research-center.png" alt="杭州电子科技大学前沿科学技术研究中心建筑与静水面倒影" width="800" height="500" loading="lazy" />
+            </div>
+            <div class="slide-content">
+              <h3>前沿科学技术研究中心</h3>
+              <p>
+                建筑以赤陶色竖向肌理与玻璃带相间，基座为浅灰石材，立面节奏清晰，呈现现代科研楼宇的克制与力量感。前方静水如镜，将楼体与晴空倒映其中，步行与骑行动线穿行其间，既是校园地标，也象征面向前沿、开放协作的科研氛围。墙面上中英文标识「Research Center for Advanced Science and Technology」点明这里汇聚交叉学科与创新团队。
+              </p>
+            </div>
+          </article>
+          <article class="carousel-slide">
+            <div class="slide-visual">
+              <img src="assets/carousel-vine-corridor.png" alt="杭州电子科技大学藤廊寄梦长廊与绿荫花影" width="800" height="500" loading="lazy" />
+            </div>
+            <div class="slide-content">
+              <h3>藤廊寄梦</h3>
+              <p>
+                长廊以灰蓝立柱与坡顶构成透视深远的轴线，两侧设石凳，藤蔓沿梁架攀援垂落，阳光穿过叶隙在地面投下韵律般的影子。春秋叶色更替时，廊下光影与落叶一同变化，是读书、小憩与散步的静谧角落。「寄梦」二字，恰合学子在此沉淀心事、安放理想的情境，也是校园人文与自然交融的一抹温柔记忆。
+              </p>
+            </div>
+          </article>
+          <article class="carousel-slide">
+            <div class="slide-visual">
+              <img src="assets/carousel-wending-plaza.png" alt="杭州电子科技大学问鼎广场与中央主题雕塑" width="800" height="500" loading="lazy" />
+            </div>
+            <div class="slide-content">
+              <h3>问鼎广场</h3>
+              <p>
+                广场开阔，中央矗立着由立柱、环形结构与向上尖塔共同组成的主题雕塑，拾级而上可环绕观赏，寓意攀登与问鼎。铺地、绿篱与远处红砖教学楼形成层次分明的校园天际线；晴空下云带舒展，空间庄重而不失活力。作为师生集会、活动与留影的核心场所，这里常被视为杭电精神气质的集中写照。
+              </p>
+            </div>
+          </article>
+        </div>
+        <div class="carousel-controls">
+          <button class="carousel-btn" type="button" id="carousel-prev" aria-label="上一张">上一张</button>
+          <div class="carousel-dots" id="carousel-dots" aria-label="轮播分页"></div>
+          <button class="carousel-btn" type="button" id="carousel-next" aria-label="下一张">下一张</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      <a href="index.html">返回导览首页</a>
+      · 权威信息请访问
+      <a href="https://www.hdu.edu.cn/" target="_blank" rel="noopener noreferrer">杭州电子科技大学官网</a>
+    </p>
+  </footer>
+
+  <button type="button" id="back-to-top" class="back-to-top" hidden aria-label="回到页面顶部">↑</button>
+
+  <script src="assets/site-shell.js" defer></script>
+  <script>
+    (function () {
+      var backBtn = document.getElementById("back-to-top");
+      function updateBackToTop() {
+        if (backBtn) backBtn.hidden = window.scrollY < 320;
+      }
+      window.addEventListener("scroll", updateBackToTop, { passive: true });
+      updateBackToTop();
+      if (backBtn) {
+        backBtn.addEventListener("click", function () {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      }
+
+      var carousel = document.getElementById("campus-carousel");
+      if (carousel) {
+        var slides = Array.prototype.slice.call(carousel.querySelectorAll(".carousel-slide"));
+        var dotsWrap = document.getElementById("carousel-dots");
+        var prevBtn = document.getElementById("carousel-prev");
+        var nextBtn = document.getElementById("carousel-next");
+        var active = 0;
+        var direction = 1;
+        var timer = null;
+
+        function render() {
+          slides.forEach(function (slide, i) {
+            var show = i === active;
+            slide.classList.remove("is-before");
+            if (!show && direction < 0) {
+              slide.classList.add("is-before");
+            }
+            slide.classList.toggle("is-active", show);
+            slide.setAttribute("aria-hidden", show ? "false" : "true");
+          });
+          var dots = dotsWrap.querySelectorAll(".carousel-dot");
+          dots.forEach(function (dot, i) {
+            dot.classList.toggle("is-active", i === active);
+          });
+        }
+
+        function go(index, dir) {
+          direction = typeof dir === "number" ? dir : 1;
+          active = (index + slides.length) % slides.length;
+          render();
+        }
+
+        function start() {
+          stop();
+          timer = setInterval(function () {
+            go(active + 1, 1);
+          }, 5200);
+        }
+
+        function stop() {
+          if (timer) clearInterval(timer);
+          timer = null;
+        }
+
+        slides.forEach(function (_, i) {
+          var dot = document.createElement("button");
+          dot.type = "button";
+          dot.className = "carousel-dot" + (i === 0 ? " is-active" : "");
+          dot.setAttribute("aria-label", "切换到第 " + (i + 1) + " 张");
+          dot.addEventListener("click", function () {
+            var dir = i >= active ? 1 : -1;
+            go(i, dir);
+            start();
+          });
+          dotsWrap.appendChild(dot);
+        });
+
+        prevBtn.addEventListener("click", function () {
+          go(active - 1, -1);
+          start();
+        });
+        nextBtn.addEventListener("click", function () {
+          go(active + 1, 1);
+          start();
+        });
+        carousel.addEventListener("mouseenter", stop);
+        carousel.addEventListener("mouseleave", start);
+        render();
+        start();
+      }
+    })();
+  </script>
+</body>
+</html>

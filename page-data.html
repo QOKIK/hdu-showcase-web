@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="杭州电子科技大学数据亮点：ESI 学科与科研平台等。" />
+  <title>数据亮点 · 杭州电子科技大学展示</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/site.css" />
+</head>
+<body>
+  <a class="skip" href="#main">跳到主要内容</a>
+  <div class="circuit-overlay" aria-hidden="true"></div>
+  <div class="bg-mesh" aria-hidden="true"></div>
+  <canvas id="bg-particles" class="bg-particles" aria-hidden="true"></canvas>
+  <div class="bg-grain" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html">杭州电子科技大学 <span>HDU</span></a>
+      <nav class="subpage-nav" id="site-nav" aria-label="站内导航">
+        <a href="index.html">导览首页</a>
+        <a href="index.html#explore">所有分块</a>
+      </nav>
+      <div class="header-controls">
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="切换浅色或深色主题">外观</button>
+        <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">菜单</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="wrap">
+    <section id="data" aria-labelledby="data-title">
+      <div class="section-label">Highlights</div>
+      <h2 id="data-title">数据亮点</h2>
+      <p>
+        下列数据为综合公开报道与学校常见宣传表述的整理，具体统计口径与更新时点以学校官方发布为准。
+      </p>
+
+      <div class="metrics-grid" aria-label="关键指标示意">
+        <div class="metric-card">
+          <span class="metric-label">本科招生专业（公开资料示例）</span>
+          <span class="metric-value">48</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-label">国家级一流本科专业建设点（示例）</span>
+          <span class="metric-value">22</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-label">2023 届校本部本科毕业去向落实率</span>
+          <span class="metric-value">95.11%</span>
+        </div>
+      </div>
+
+      <div class="charts-grid">
+        <div class="chart-card">
+          <h3 class="chart-title">演示：分学院升学人数（虚构示例，仅作图表动效）</h3>
+          <div class="chart-toggle" role="group" aria-label="图表类型">
+            <button type="button" class="is-active" data-mode="bar">柱状</button>
+            <button type="button" data-mode="line">折线</button>
+          </div>
+          <div class="chart-wrap">
+            <canvas id="chart-enrollment" height="260" aria-label="升学人数演示图"></canvas>
+          </div>
+        </div>
+        <div class="chart-card">
+          <h3 class="chart-title">演示：毕业去向结构（虚构占比，非官方统计图）</h3>
+          <div class="chart-wrap">
+            <canvas id="chart-outcomes" height="260" aria-label="毕业去向结构演示图"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <strong>ESI 与学科影响力</strong>
+          <p style="margin: 0.5rem 0 0; font-size: 0.95rem;">
+            工程学、计算机科学、材料科学、化学等多个学科进入 ESI 全球前 1%；其中工程学、计算机科学等学科在全球排名中表现突出（不同年份排名位次会有波动）。
+          </p>
+        </div>
+        <div class="card">
+          <strong>科研平台（示例）</strong>
+          <ul class="clean" style="margin-top: 0.5rem;">
+            <li>省部级及以上重点实验室、工程研究中心等科研载体</li>
+            <li>脑机协同智能技术国际联合研究中心等国际合作平台</li>
+            <li>服务数字经济与智能制造的校企联合实验室与地方研究院网络</li>
+          </ul>
+        </div>
+      </div>
+      <div class="panel" style="margin-top: 1rem;">
+        <h3>知名校友（不完全列举）</h3>
+        <p style="margin-top: 0;">
+          校友广泛分布于 ICT、智能制造、金融科技等领域。公开报道中常提及的校友企业家与学者众多，此处不一一罗列姓名，以免疏漏；宣讲时可结合学院提供的校友名录与典型事迹展开。
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      <a href="index.html">返回导览首页</a>
+      · 权威信息请访问
+      <a href="https://www.hdu.edu.cn/" target="_blank" rel="noopener noreferrer">杭州电子科技大学官网</a>
+    </p>
+  </footer>
+
+  <button type="button" id="back-to-top" class="back-to-top" hidden aria-label="回到页面顶部">↑</button>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="assets/site-shell.js" defer></script>
+  <script>
+    (function () {
+      var backBtn = document.getElementById("back-to-top");
+      function updateBackToTop() {
+        if (backBtn) backBtn.hidden = window.scrollY < 320;
+      }
+      window.addEventListener("scroll", updateBackToTop, { passive: true });
+      updateBackToTop();
+      if (backBtn) {
+        backBtn.addEventListener("click", function () {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      }
+
+      function chartText() {
+        return document.body.getAttribute("data-theme") === "dark" ? "#cfe2f3" : "#3f5875";
+      }
+      function chartGrid() {
+        return document.body.getAttribute("data-theme") === "dark" ? "rgba(170, 193, 218, 0.2)" : "rgba(29, 78, 216, 0.12)";
+      }
+
+      var barCol = "rgba(0, 212, 255, 0.65)";
+      var barCol2 = "rgba(255, 107, 53, 0.7)";
+
+      var enrollCanvas = document.getElementById("chart-enrollment");
+      var enrollChart = null;
+      if (enrollCanvas && typeof Chart !== "undefined") {
+        var labels = ["计算机", "电子信息", "自动化", "通信", "经管", "理学"];
+        var data = [420, 380, 290, 310, 240, 180];
+        function enrollOpts() {
+          return {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { labels: { color: chartText } }
+            },
+            scales: {
+              x: { ticks: { color: chartText }, grid: { color: chartGrid } },
+              y: { ticks: { color: chartText }, grid: { color: chartGrid }, beginAtZero: true }
+            }
+          };
+        }
+        function renderEnroll(type) {
+          if (enrollChart) enrollChart.destroy();
+          var ds =
+            type === "line"
+              ? {
+                  label: "升学人数（演示）",
+                  data: data,
+                  borderColor: barCol2,
+                  backgroundColor: "rgba(255, 107, 53, 0.15)",
+                  fill: true,
+                  tension: 0.35,
+                  pointRadius: 4
+                }
+              : {
+                  label: "升学人数（演示）",
+                  data: data,
+                  backgroundColor: barCol,
+                  borderRadius: 6
+                };
+          enrollChart = new Chart(enrollCanvas.getContext("2d"), {
+            type: type,
+            data: { labels: labels, datasets: [ds] },
+            options: enrollOpts()
+          });
+        }
+        renderEnroll("bar");
+        document.querySelectorAll(".chart-toggle button").forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            var mode = btn.getAttribute("data-mode");
+            if (!mode) return;
+            btn.parentElement.querySelectorAll("button").forEach(function (b) {
+              b.classList.toggle("is-active", b === btn);
+            });
+            renderEnroll(mode);
+          });
+        });
+      }
+
+      var outCanvas = document.getElementById("chart-outcomes");
+      if (outCanvas && typeof Chart !== "undefined") {
+        new Chart(outCanvas.getContext("2d"), {
+          type: "doughnut",
+          data: {
+            labels: ["国内升学", "出国出境", "协议就业", "其他去向"],
+            datasets: [
+              {
+                data: [36.4, 5.4, 48.0, 10.2],
+                backgroundColor: [
+                  "rgba(0, 212, 255, 0.75)",
+                  "rgba(255, 107, 53, 0.75)",
+                  "rgba(47, 128, 237, 0.7)",
+                  "rgba(160, 174, 192, 0.55)"
+                ],
+                borderWidth: 1,
+                borderColor: "rgba(255,255,255,0.85)"
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { position: "bottom", labels: { color: chartText, padding: 14 } }
+            }
+          }
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

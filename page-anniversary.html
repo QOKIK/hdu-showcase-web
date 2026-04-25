@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="杭州电子科技大学 70 周年校庆专题示意与校友祝福墙。" />
+  <title>70 周年校庆 · 杭州电子科技大学展示</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/site.css" />
+</head>
+<body>
+  <a class="skip" href="#main">跳到主要内容</a>
+  <div class="circuit-overlay" aria-hidden="true"></div>
+  <div class="bg-mesh" aria-hidden="true"></div>
+  <canvas id="bg-particles" class="bg-particles" aria-hidden="true"></canvas>
+  <div class="bg-grain" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html">杭州电子科技大学 <span>HDU</span></a>
+      <nav class="subpage-nav" id="site-nav" aria-label="站内导航">
+        <a href="index.html">导览首页</a>
+        <a href="index.html#explore">所有分块</a>
+      </nav>
+      <div class="header-controls">
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="切换浅色或深色主题">外观</button>
+        <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">菜单</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="wrap">
+    <section id="anniversary" aria-labelledby="anniversary-title">
+      <div class="section-label">70th Anniversary</div>
+      <h2 id="anniversary-title">校庆专题 · 70 周年</h2>
+      <p>
+        学校创建于 1956 年，2026 年迎来建校 70 周年。以下为页面内静态模拟：标识图形、活动日程与校友祝福墙，实际安排以学校官方发布为准。
+      </p>
+
+      <div class="panel">
+        <h3>校友「云祝福」气泡</h3>
+        <p style="margin-top: 0;">模拟多终端留言氛围，与下方表单留言墙形成对照。</p>
+        <div class="voice-wall">
+          <article class="voice-card" style="--voice-delay: 0ms;">
+            <div class="voice-head">
+              <span class="voice-avatar" aria-hidden="true">杭</span>
+              <span>2017 届 · 通信</span>
+            </div>
+            <p class="voice-text">七十载厚积薄发，愿母校在「芯」时代再攀新高。</p>
+          </article>
+          <article class="voice-card" style="--voice-delay: 200ms;">
+            <div class="voice-head">
+              <span class="voice-avatar" aria-hidden="true">电</span>
+              <span>在校生 · 社团</span>
+            </div>
+            <p class="voice-text">图书馆闭馆音乐一响，又是与杭电相伴的一天。</p>
+          </article>
+          <article class="voice-card" style="--voice-delay: 400ms;">
+            <div class="voice-head">
+              <span class="voice-avatar" aria-hidden="true">友</span>
+              <span>校友 · 上海</span>
+            </div>
+            <p class="voice-text">钱塘潮涌，祝福母校七十华诞桃李芬芳。</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>校庆祝福语海报（本地生成）</h3>
+        <div class="blessing-generator">
+          <div class="blessing-form">
+            <input id="bless-name" type="text" placeholder="署名，例如：2020 届 · 计算机学院" aria-label="海报署名" />
+            <button type="button" id="bless-gen-btn">生成海报文案</button>
+          </div>
+          <div class="blessing-poster" aria-live="polite">
+            <p class="blessing-title">杭州电子科技大学 · 70 周年</p>
+            <p class="blessing-main" id="bless-main">钱塘潮涌，「芯」火相承——感恩母校，共祝华诞。</p>
+            <p class="blessing-sub" id="bless-sub">输入署名后点击「生成」，可用于投屏或社群转发示意。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>校庆标志</h3>
+        <div class="logo-70">
+          <svg width="160" height="160" viewBox="0 0 160 160" role="img" aria-label="70 周年校庆标志示意">
+            <defs>
+              <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#e8b84a" />
+                <stop offset="100%" style="stop-color:#b45309" />
+              </linearGradient>
+            </defs>
+            <circle cx="80" cy="80" r="74" fill="none" stroke="url(#g)" stroke-width="4" opacity="0.9" />
+            <text x="80" y="92" text-anchor="middle" font-family="Noto Sans SC, Georgia, serif" font-size="56" font-weight="600" fill="#fde68a">70</text>
+            <text x="80" y="118" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="11" fill="#94a3b8" letter-spacing="0.15em">HDU · 1956—2026</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>校庆活动日程（静态模拟）</h3>
+        <table class="schedule">
+          <thead>
+            <tr>
+              <th scope="col">日期（示意）</th>
+              <th scope="col">活动</th>
+              <th scope="col">地点（示意）</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2026 年春（待定）</td>
+              <td>校友返校日 / 校园开放参观</td>
+              <td>下沙校区各学院楼宇</td>
+            </tr>
+            <tr>
+              <td>校庆周（待定）</td>
+              <td>高水平学术论坛与产业对接活动</td>
+              <td>图书馆报告厅等</td>
+            </tr>
+            <tr>
+              <td>校庆日（待定）</td>
+              <td>庆祝大会、文艺演出</td>
+              <td>体育馆 / 学生活动中心</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="panel">
+        <h3>校友祝福留言墙（静态 + 本地模拟）</h3>
+        <p style="margin-top: 0;">以下为预设示例留言。您也可以在下方填写姓名与祝福，仅在当前浏览器会话中追加显示（刷新后恢复）。</p>
+        <div id="wall" class="wall" aria-live="polite"></div>
+        <form class="wall-form" id="wall-form" aria-label="添加祝福">
+          <label for="w-name">称呼</label>
+          <input id="w-name" type="text" placeholder="例如：2018 届 · 计算机学院" autocomplete="name" />
+          <label for="w-msg">祝福</label>
+          <textarea id="w-msg" rows="3" placeholder="写一句对母校的祝愿…"></textarea>
+          <button type="submit">贴到留言墙（本地演示）</button>
+          <small>不向服务器提交数据，仅用于页面展示效果。</small>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      <a href="index.html">返回导览首页</a>
+      · 权威信息请访问
+      <a href="https://www.hdu.edu.cn/" target="_blank" rel="noopener noreferrer">杭州电子科技大学官网</a>
+    </p>
+  </footer>
+
+  <button type="button" id="back-to-top" class="back-to-top" hidden aria-label="回到页面顶部">↑</button>
+
+  <script src="assets/site-shell.js" defer></script>
+  <script>
+    (function () {
+      document.getElementById("bless-gen-btn").addEventListener("click", function () {
+        var name = document.getElementById("bless-name").value.trim() || "杭电人";
+        document.getElementById("bless-main").textContent =
+          name + "：祝母校七十华诞桃李芬芳，「芯」火相传再谱新篇！";
+        document.getElementById("bless-sub").textContent = "生成于 " + new Date().toLocaleString("zh-CN") + " · 展示用示意文案";
+      });
+
+      var backBtn = document.getElementById("back-to-top");
+      function updateBackToTop() {
+        if (backBtn) backBtn.hidden = window.scrollY < 320;
+      }
+      window.addEventListener("scroll", updateBackToTop, { passive: true });
+      updateBackToTop();
+      if (backBtn) {
+        backBtn.addEventListener("click", function () {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      }
+
+      var preset = [
+        { who: "某届 · 电子信息学院", msg: "钱塘潮涌，母校长青。愿学弟学妹勇攀高峰！" },
+        { who: "校友 · 杭州", msg: "在西湖与代码之间，永远记得图书馆闭馆音乐。" },
+        { who: "某届 · 管理学院", msg: "感恩杭电，祝七十华诞桃李芬芳。" },
+        { who: "在校生 · 社团", msg: "愿母校越来越好，我们在社团等你！" }
+      ];
+      var wall = document.getElementById("wall");
+      function card(item) {
+        var el = document.createElement("article");
+        el.className = "wall-card";
+        el.innerHTML = '<div class="who"></div><div class="msg"></div>';
+        el.querySelector(".who").textContent = item.who;
+        el.querySelector(".msg").textContent = item.msg;
+        return el;
+      }
+      preset.forEach(function (p) {
+        wall.appendChild(card(p));
+      });
+      document.getElementById("wall-form").addEventListener("submit", function (e) {
+        e.preventDefault();
+        var name = document.getElementById("w-name").value.trim() || "匿名校友";
+        var msg = document.getElementById("w-msg").value.trim();
+        if (!msg) return;
+        wall.insertBefore(card({ who: name, msg: msg }), wall.firstChild);
+        document.getElementById("w-msg").value = "";
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="杭州电子科技大学下沙校区地图、可点击地标与图文介绍。" />
+  <title>校园地图与地标 · 杭州电子科技大学展示</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/site.css" />
+</head>
+<body>
+  <a class="skip" href="#main">跳到主要内容</a>
+  <div class="circuit-overlay" aria-hidden="true"></div>
+  <div class="bg-mesh" aria-hidden="true"></div>
+  <canvas id="bg-particles" class="bg-particles" aria-hidden="true"></canvas>
+  <div class="bg-grain" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html">杭州电子科技大学 <span>HDU</span></a>
+      <nav class="subpage-nav" id="site-nav" aria-label="站内导航">
+        <a href="index.html">导览首页</a>
+        <a href="index.html#explore">所有分块</a>
+      </nav>
+      <div class="header-controls">
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="切换浅色或深色主题">外观</button>
+        <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">菜单</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="wrap">
+    <section id="landmarks" aria-labelledby="landmarks-title">
+      <div class="section-label">Campus</div>
+      <h2 id="landmarks-title">校园地图与地标</h2>
+      <p>
+        下沙校区是本科生主要学习与生活区域。下方地图上的圆点为交互标记（位置为页面展示用示意，可按实际地图微调坐标）；点击圆点可查看文字说明与配图，也可结合底部图文卡片浏览。
+      </p>
+
+      <div class="map-interactive">
+        <p>提示：橙色圆点可点击；当前选中的点为青色。</p>
+        <div class="map-toolbar" aria-label="地图点位微调工具">
+          <button type="button" id="map-edit-toggle">开启微调</button>
+          <button type="button" id="map-copy-style">复制当前点位样式</button>
+          <code id="map-coord-readout">当前点：未选择</code>
+        </div>
+        <div class="map-stage" id="campus-map-stage">
+          <img class="map-bg" src="assets/hdu-campus-map-v2.png" alt="杭州电子科技大学下沙校区地图，标注了校门、教学楼、图书馆、体育馆与生活区。" width="1600" height="1000" loading="lazy" />
+          <div class="map-pins-layer">
+            <button type="button" class="map-pin-btn" style="left: 46.1%; top: 24.7%" data-place="library" aria-label="图书馆"></button>
+            <button type="button" class="map-pin-btn" style="left: 17.5%; top: 28.3%" data-place="gym" aria-label="体育馆"></button>
+            <button type="button" class="map-pin-btn" style="left: 54.5%; top: 55.6%" data-place="scenery" aria-label="校园美景"></button>
+            <button type="button" class="map-pin-btn" style="left: 47.0%; top: 14.2%" data-place="life-zone" aria-label="生活区北门（三花）"></button>
+            <button type="button" class="map-pin-btn" style="left: 40.1%; top: 38.4%" data-place="teaching-zone" aria-label="教学楼组团"></button>
+            <button type="button" class="map-pin-btn" style="left: 69.0%; top: 26.7%" data-place="student-center" aria-label="学生活动中心"></button>
+          </div>
+          <div class="map-float-card" id="map-float-card" hidden>
+            <div class="map-float-head">
+              <h4 class="map-float-title" id="map-float-title"></h4>
+              <button type="button" class="map-float-close" id="map-float-close" aria-label="关闭悬浮窗">×</button>
+            </div>
+            <p class="map-float-desc" id="map-float-desc"></p>
+            <div class="map-float-thumb" id="map-float-thumb" hidden>
+              <img id="map-float-img" src="" alt="" loading="lazy" />
+            </div>
+          </div>
+        </div>
+        <div class="map-info" id="map-info-panel">
+          <h4 id="map-info-title">地图点位已校对</h4>
+          <p id="map-info-desc">点击任意圆点后，会在地图上方出现对应说明悬浮窗；再次点击图片可放大查看。</p>
+          <div class="map-info-visual" id="map-info-visual" hidden>
+            <button type="button" class="lightbox-trigger" id="map-info-lightbox-btn" data-lightbox-src="" aria-label="放大查看地标配图">
+              <img id="map-info-img" src="" alt="" width="800" height="500" loading="lazy" />
+            </button>
+          </div>
+        </div>
+        <p class="map-caption" style="margin-top: 0.75rem; border-radius: 10px; border: 1px solid var(--stroke);">
+          地图来源：用户提供的杭电地图图片；交互点坐标为示意，新增或调整交互点时，可修改本页 HTML 中按钮的 <code style="font-size: 0.85em">left</code> / <code style="font-size: 0.85em">top</code> 百分比及脚本中的 <code style="font-size: 0.85em">placeInfo</code> 对象。
+        </p>
+      </div>
+
+      <div class="map-box" style="margin-top: 1.5rem;">
+        <button type="button" class="lightbox-trigger" data-lightbox-src="assets/hdu-campus-map-v2.png" aria-label="点击放大查看校园地图整图">
+          <img src="assets/hdu-campus-map-v2.png" alt="杭州电子科技大学下沙校区地图整图预览" loading="lazy" />
+        </button>
+        <p class="map-caption">需要查看整图细节时，可点击上图放大。</p>
+      </div>
+
+      <div class="landmark-grid" style="margin-top: 1.25rem;">
+        <article class="landmark">
+          <div class="landmark-visual">
+            <button type="button" class="lightbox-trigger" data-lightbox-src="assets/landmark-stone.png" aria-label="放大查看：校名石碑与主校门区域">
+              <img src="assets/landmark-stone.png" alt="杭州电子科技大学校名石碑与校园建筑前的景观" loading="lazy" />
+            </button>
+          </div>
+          <div class="landmark-body">
+            <h3 style="margin-top: 0;">校名石碑与主校门区域</h3>
+            <p>校园形象展示与新生入学「打卡」常见地点，体现学校标识与文化氛围。</p>
+          </div>
+        </article>
+        <article class="landmark">
+          <div class="landmark-visual">
+            <button type="button" class="lightbox-trigger" data-lightbox-src="assets/landmark-library.png" aria-label="放大查看：图书馆">
+              <img src="assets/landmark-library.png" alt="杭州电子科技大学下沙校区图书馆主楼外观" loading="lazy" />
+            </button>
+          </div>
+          <div class="landmark-body">
+            <h3 style="margin-top: 0;">图书馆</h3>
+            <p>文献资源与自习空间集中地，期末与考研季是校园「热度」最高的场所之一。</p>
+          </div>
+        </article>
+        <article class="landmark">
+          <div class="landmark-visual">
+            <button type="button" class="lightbox-trigger" data-lightbox-src="assets/landmark-gym.png" aria-label="放大查看：体育馆">
+              <img src="assets/landmark-gym.png" alt="杭州电子科技大学下沙校区体育馆及周边校园鸟瞰" loading="lazy" />
+            </button>
+          </div>
+          <div class="landmark-body">
+            <h3 style="margin-top: 0;">体育馆</h3>
+            <p>大型集会、体育赛事与部分文艺活动的举办场地；校庆晚会等可在此举行（以当年安排为准）。</p>
+          </div>
+        </article>
+        <article class="landmark">
+          <div class="landmark-visual">
+            <button type="button" class="lightbox-trigger" data-lightbox-src="assets/landmark-scenery.png" aria-label="放大查看：校园美景">
+              <img src="assets/landmark-scenery.png" alt="杭州电子科技大学校园水景与建筑倒映的校园风光" loading="lazy" />
+            </button>
+          </div>
+          <div class="landmark-body">
+            <h3 style="margin-top: 0;">校园美景</h3>
+            <p>湖光树影与现代楼宇相映，是日常散步与留影的常见场景，展现下沙校区的宜居环境与校园气质。</p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      <a href="index.html">返回导览首页</a>
+      · 权威信息请访问
+      <a href="https://www.hdu.edu.cn/" target="_blank" rel="noopener noreferrer">杭州电子科技大学官网</a>
+    </p>
+  </footer>
+
+  <button type="button" id="back-to-top" class="back-to-top" hidden aria-label="回到页面顶部">↑</button>
+
+  <script src="assets/site-shell.js" defer></script>
+
+  <div id="lightbox" class="lightbox" hidden role="dialog" aria-modal="true" aria-label="大图预览">
+    <div class="lightbox-inner">
+      <button type="button" class="lightbox-close" aria-label="关闭大图">×</button>
+      <img src="" alt="" />
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var placeInfo = {
+        library: {
+          title: "图书馆",
+          text: "文献资源与自习空间集中地，期末与考研季是校园「热度」最高的场所之一。",
+          img: "assets/landmark-library.png",
+          imgAlt: "杭州电子科技大学下沙校区图书馆主楼外观"
+        },
+        gym: {
+          title: "体育馆",
+          text: "大型集会、体育赛事与部分文艺活动的举办场地；校庆晚会等可在此举行（以当年安排为准）。",
+          img: "assets/landmark-gym.png",
+          imgAlt: "杭州电子科技大学下沙校区体育馆及周边校园鸟瞰"
+        },
+        scenery: {
+          title: "校园美景",
+          text: "位于地图右下侧，周边连接教学与生活功能区，是日常活动与留影的典型校园景观区域。",
+          img: "assets/landmark-scenery.png",
+          imgAlt: "杭州电子科技大学校园水景与建筑倒映的校园风光"
+        },
+        "life-zone": {
+          title: "生活区北门（三花）",
+          text: "地图上方生活区入口，临近宿舍与生活服务设施，日常通行频率较高。",
+          img: "assets/carousel-vine-corridor.png",
+          imgAlt: "杭州电子科技大学生活区相关场景"
+        },
+        "teaching-zone": {
+          title: "教学楼组团（4-10 教学楼）",
+          text: "地图中心区域，教学楼分布密集，连接图书馆与学生活动中心。",
+          img: "assets/carousel-research-center.png",
+          imgAlt: "杭州电子科技大学教学楼区域"
+        },
+        "student-center": {
+          title: "学生活动中心",
+          text: "位于图书馆东侧，社团活动、会议与校园文化活动常在此开展。",
+          img: "assets/carousel-wending-plaza.png",
+          imgAlt: "杭州电子科技大学学生活动中心相关场景"
+        }
+      };
+
+      var titleEl = document.getElementById("map-info-title");
+      var descEl = document.getElementById("map-info-desc");
+      var visualEl = document.getElementById("map-info-visual");
+      var imgEl = document.getElementById("map-info-img");
+      var lbBtn = document.getElementById("map-info-lightbox-btn");
+      var floatCard = document.getElementById("map-float-card");
+      var floatTitle = document.getElementById("map-float-title");
+      var floatDesc = document.getElementById("map-float-desc");
+      var floatThumb = document.getElementById("map-float-thumb");
+      var floatImg = document.getElementById("map-float-img");
+      var floatCloseBtn = document.getElementById("map-float-close");
+      var stage = document.getElementById("campus-map-stage");
+      var pins = document.querySelectorAll(".map-pin-btn");
+      var editToggle = document.getElementById("map-edit-toggle");
+      var copyStyleBtn = document.getElementById("map-copy-style");
+      var coordReadout = document.getElementById("map-coord-readout");
+      var isEditMode = false;
+      var activePin = null;
+
+      function updateCoordReadout(pin) {
+        if (!pin || !stage) {
+          coordReadout.textContent = "当前点：未选择";
+          return;
+        }
+        var px = pin.offsetLeft / stage.clientWidth;
+        var py = pin.offsetTop / stage.clientHeight;
+        var left = (px * 100).toFixed(1);
+        var top = (py * 100).toFixed(1);
+        coordReadout.textContent =
+          pin.getAttribute("data-place") + ' -> style="left: ' + left + '%; top: ' + top + '%"';
+      }
+
+      function showPlace(key, pin) {
+        var data = placeInfo[key];
+        if (!data) return;
+        titleEl.textContent = "当前点位：" + data.title;
+        descEl.textContent = data.text;
+        floatTitle.textContent = data.title;
+        floatDesc.textContent = data.text;
+        if (data.img) {
+          imgEl.src = data.img;
+          imgEl.alt = data.imgAlt || "";
+          lbBtn.setAttribute("data-lightbox-src", data.img);
+          visualEl.hidden = false;
+          floatImg.src = data.img;
+          floatImg.alt = data.imgAlt || "";
+          floatThumb.hidden = false;
+        } else {
+          visualEl.hidden = true;
+          imgEl.removeAttribute("src");
+          lbBtn.setAttribute("data-lightbox-src", "");
+          floatThumb.hidden = true;
+          floatImg.removeAttribute("src");
+        }
+        if (pin && stage) {
+          var x = pin.offsetLeft;
+          var y = pin.offsetTop;
+          var half = Math.max(110, Math.min(160, Math.floor(stage.clientWidth * 0.24)));
+          var left = Math.max(half, Math.min(stage.clientWidth - half, x));
+          var top = Math.max(18, y - 18);
+          floatCard.style.left = left + "px";
+          floatCard.style.top = top + "px";
+          floatCard.classList.toggle("is-below", y < stage.clientHeight * 0.36);
+          floatCard.hidden = false;
+        }
+        pins.forEach(function (p) {
+          p.classList.toggle("is-active", p.getAttribute("data-place") === key);
+        });
+        activePin = pin || activePin;
+        updateCoordReadout(activePin);
+      }
+
+      pins.forEach(function (pin) {
+        pin.addEventListener("pointerdown", function (e) {
+          if (!isEditMode || !stage) return;
+          e.preventDefault();
+          activePin = pin;
+          pin.setPointerCapture(e.pointerId);
+        });
+        pin.addEventListener("pointermove", function (e) {
+          if (!isEditMode || !stage || !pin.hasPointerCapture(e.pointerId)) return;
+          var rect = stage.getBoundingClientRect();
+          var x = Math.max(0, Math.min(rect.width, e.clientX - rect.left));
+          var y = Math.max(0, Math.min(rect.height, e.clientY - rect.top));
+          pin.style.left = (x / rect.width * 100).toFixed(1) + "%";
+          pin.style.top = (y / rect.height * 100).toFixed(1) + "%";
+          showPlace(pin.getAttribute("data-place"), pin);
+        });
+        pin.addEventListener("pointerup", function (e) {
+          if (pin.hasPointerCapture(e.pointerId)) pin.releasePointerCapture(e.pointerId);
+          updateCoordReadout(pin);
+        });
+        pin.addEventListener("click", function () {
+          showPlace(pin.getAttribute("data-place"), pin);
+        });
+      });
+
+      if (editToggle) {
+        editToggle.addEventListener("click", function () {
+          isEditMode = !isEditMode;
+          stage.classList.toggle("is-editing", isEditMode);
+          editToggle.textContent = isEditMode ? "退出微调" : "开启微调";
+        });
+      }
+      if (copyStyleBtn) {
+        copyStyleBtn.addEventListener("click", function () {
+          if (!activePin) return;
+          var txt = coordReadout.textContent;
+          navigator.clipboard.writeText(txt).then(function () {
+            copyStyleBtn.textContent = "已复制";
+            setTimeout(function () { copyStyleBtn.textContent = "复制当前点位样式"; }, 900);
+          });
+        });
+      }
+      if (floatCloseBtn) {
+        floatCloseBtn.addEventListener("click", function () {
+          floatCard.hidden = true;
+          pins.forEach(function (p) {
+            p.classList.remove("is-active");
+          });
+          activePin = null;
+          updateCoordReadout(null);
+        });
+      }
+      if (pins.length) {
+        showPlace(pins[0].getAttribute("data-place"), pins[0]);
+      }
+
+      var backBtn = document.getElementById("back-to-top");
+      function updateBackToTop() {
+        if (backBtn) backBtn.hidden = window.scrollY < 320;
+      }
+      window.addEventListener("scroll", updateBackToTop, { passive: true });
+      updateBackToTop();
+      if (backBtn) {
+        backBtn.addEventListener("click", function () {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      }
+
+      var lightbox = document.getElementById("lightbox");
+      var lightboxImg = lightbox ? lightbox.querySelector("img") : null;
+      var lightboxClose = lightbox ? lightbox.querySelector(".lightbox-close") : null;
+      var lastFocusEl = null;
+
+      function openLightbox(src, alt) {
+        if (!lightbox || !lightboxImg || !src) return;
+        lastFocusEl = document.activeElement;
+        lightboxImg.src = src;
+        lightboxImg.alt = alt || "";
+        lightbox.hidden = false;
+        document.body.style.overflow = "hidden";
+        if (lightboxClose) lightboxClose.focus();
+      }
+
+      function closeLightbox() {
+        if (!lightbox || !lightboxImg) return;
+        lightbox.hidden = true;
+        lightboxImg.src = "";
+        lightboxImg.alt = "";
+        document.body.style.overflow = "";
+        if (lastFocusEl && typeof lastFocusEl.focus === "function") lastFocusEl.focus();
+        lastFocusEl = null;
+      }
+
+      document.querySelectorAll(".lightbox-trigger").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var src = btn.getAttribute("data-lightbox-src");
+          var img = btn.querySelector("img");
+          if (!src && img) src = img.getAttribute("src");
+          var alt = img ? img.getAttribute("alt") : "";
+          openLightbox(src, alt);
+        });
+      });
+
+      if (lightbox) {
+        lightbox.addEventListener("click", function (e) {
+          if (e.target === lightbox) closeLightbox();
+        });
+      }
+      if (lightboxClose) {
+        lightboxClose.addEventListener("click", function (e) {
+          e.stopPropagation();
+          closeLightbox();
+        });
+      }
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && lightbox && !lightbox.hidden) closeLightbox();
+      });
+    })();
+  </script>
+</body>
+</html>
